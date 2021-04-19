@@ -16,3 +16,12 @@ export interface ContributionProps {
     shelterID : Number | undefined
 }
 
+export type Message = {
+    type: String,
+    message: String
+}
+
+export type Messages = {
+    messages : Message[]
+}
+

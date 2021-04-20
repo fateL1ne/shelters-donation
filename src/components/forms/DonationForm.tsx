@@ -1,12 +1,16 @@
-import { Grid, Typography, Box } from '@material-ui/core';
+import { Grid, Typography, Box, MenuItem, FormControl } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { Shelters, Shelter, State } from '../../react-app-env'; 
 import { fetchShelters } from '../../service/http/Shelter';
 import Select from '@material-ui/core/Select';
 import AmountPicker from './AmountPicker';
+import PayloadToggle from './PaymentToggle';
+import store from './../../redux/store';
+import { setShelter } from '../../redux/slices/Donation';
+import { connect } from 'react-redux';
 
 
-export default function DonationForm() {
+function DonationForm(props : any) {
 
     const [ shelters, setShelters ] = useState<Shelters | null>(null);
 
@@ -19,27 +23,62 @@ export default function DonationForm() {
         })
     }, [])
 
+
+    function changeShelter(event: React.ChangeEvent<{ value: unknown }>) {
+        if (shelters && typeof event.target.value === 'number') {
+            store.dispatch(setShelter(shelters?.shelters[event.target.value -1]));
+        }
+    }
+
+    function getMenuItems() {
+        return shelters?.shelters.map((shelter : Shelter) => {
+            return <MenuItem value={shelter.id}> {shelter.name} </MenuItem>
+        })
+    }
+
     return (
-        <Grid container direction="column" spacing={3}>
+        <Grid container spacing={2}>
             <Grid item>
             <Typography component="div">
-                <Box fontSize="h3.fontSize" fontWeight="fontWeightMedium" m={1}>
-                    Potrebujeme od Vás zopár informácií
+                <Box fontSize="h4.fontSize" fontWeight="fontWeightBold" m={1}>
+                    Vyberte si možnosť, ako chcete pomôcť
                 </Box>
             </Typography>
             </Grid>
             <Grid item>
-                neskor
+                <PayloadToggle />
             </Grid>
-            <Grid item xs={9}>
-                <h3> Najviac mi záleží na útulku</h3>
-                <Select fullWidth/>
+            <Grid item xs={10}>
+                <Typography component="div">
+                        <Box fontWeight="fontWeightMedium" p={2}>
+                            Najviac mi záleží na útulku
+                        </Box>
+                    </Typography>
+                { shelters && 
+                <FormControl variant="outlined" fullWidth >
+                    <Select fullWidth value={ (props.shelter) ?  props.shelter.id : 1}  onChange={(e) => changeShelter(e)}>
+                        {getMenuItems() }
+                    </Select>
+                </FormControl>
+                }
+                
             </Grid>
             <Grid item>
-                <h3>Suma ktorou chcem prispiet</h3>
+                <Typography component="div">
+                    <Box fontWeight="fontWeightMedium" p={2}>
+                        Suma ktorou chcem prispieť
+                    </Box>
+                </Typography>
                 <AmountPicker />
             </Grid>
         </Grid>
     );
 }
 
+function mapStateToProps (state : State) {
+    return { 
+        shelter : state.donation.shelter
+    }
+}
+
+export default connect(mapStateToProps)(DonationForm)

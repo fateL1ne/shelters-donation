@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DonationForm from './forms/DonationForm';
-import SummaryForm from './SummaryForm';
-import PersonalForm from './PersonalForm';
+import SummaryForm from './forms/SummaryForm';
+import PersonalForm from './forms/PersonalForm';
 import styled from 'styled-components';
 import store from '../redux/store';
 import { increment, decrement } from '../redux/slices/Steps';
@@ -12,7 +12,7 @@ import Footer from './Footer';
 import DogImage from '../assets/images/dog_main.png';
 
 import { Container, Grid } from '@material-ui/core';
-import { JsxEmit } from 'typescript';
+
 
 interface StepsProps {
     actualStep : number

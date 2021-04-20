@@ -2,9 +2,9 @@ import { Box, Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
-import store from '../redux/store';
-import { setEmail, setFirstName, setLastName, setPhone } from '../redux/slices/User';
-import { State } from '../react-app-env';
+import store from '../../redux/store';
+import { setEmail, setFirstName, setLastName, setPhone } from '../../redux/slices/User';
+import { State } from '../../react-app-env';
 
 
 function PersonalForm() {

@@ -1,16 +1,14 @@
 import { Grid, Typography, Box } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-import { Shelters, Shelter } from '../../react-app-env'; 
+import { Shelters, Shelter, State } from '../../react-app-env'; 
 import { fetchShelters } from '../../service/http/Shelter';
 import Select from '@material-ui/core/Select';
+import AmountPicker from './AmountPicker';
 
 
 export default function DonationForm() {
-    const [ shelters, setShelters ] = useState<Shelters | null>(null);
-    const [ donationSum, setDonationSum ] = useState<Number>(0);
-    const [ generalDonation, setGeneralDonation ] = useState<Boolean>(true);
-    const [ chooseShelter, setChoosenShelter ] = useState<Shelter | null>(null);
 
+    const [ shelters, setShelters ] = useState<Shelters | null>(null);
 
     useEffect(() => {
         fetchShelters().then( (shelters : Shelters) => {
@@ -39,25 +37,9 @@ export default function DonationForm() {
             </Grid>
             <Grid item>
                 <h3>Suma ktorou chcem prispiet</h3>
-                <Grid container spacing={3}>
-                    <Grid item>
-                        5e
-                    </Grid>
-                    <Grid item>
-                        10e
-                    </Grid>
-                    <Grid item>
-                        20e
-                    </Grid>
-                    <Grid item>
-                        30e
-                    </Grid>
-                    <Grid item>
-                        50e
-                    </Grid>
-                </Grid>
+                <AmountPicker />
             </Grid>
         </Grid>
     );
-
 }
+

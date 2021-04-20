@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Donation } from '../../react-app-env';
+import { Donation, Shelter } from '../../react-app-env';
 
 
 const initialState : Donation = {
@@ -13,9 +13,18 @@ const donationSlice = createSlice({
     reducers: {
         setDonation(state, action : PayloadAction<Donation>) {
             state = action.payload;
+        },
+        setAmount(state, action : PayloadAction<number>) {
+            state.amount = action.payload;
+        },
+        setGeneral(state, action : PayloadAction<boolean>) {
+            state.general = action.payload;
+        },
+        setShelter(state, action : PayloadAction<Shelter>) {
+            state.shelter = action.payload;
         }
     }
 })
 
-export const { setDonation } = donationSlice.actions;
+export const { setDonation, setAmount, setGeneral, setShelter } = donationSlice.actions;
 export default donationSlice.reducer;

@@ -1,19 +1,23 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { StepsState } from '../../react-app-env';
 
-const initialState : number = 1;
+
+const initialState : StepsState = {
+    actualStep: 0
+};
 
 const stepSlice = createSlice({
     name: 'steps',
     initialState: initialState,
     reducers: {
-        next(state) {
-            state += 1
+        increment: (state : StepsState) => {
+            state.actualStep++
         },
-        previous(state) {
-            state -= 1;
+        decrement: (state : StepsState) => {
+            state.actualStep--
         }
     }
 })
 
-export const { next, previous } = stepSlice.actions;
+export const { increment, decrement } = stepSlice.actions;
 export default stepSlice.reducer;

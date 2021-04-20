@@ -6,29 +6,29 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 
 const AppBar = styled.div`
     width: 100%;
-    border-bottom: 1px solid #616161;
-    height: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    height: 2.5rem;
+    position: relative;
 `;
 
 const Title = styled.div`
+    position: absolute;
     padding: 1rem;
     margin-left: 15%;
-    float: left;
     font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    letter-spacing: 2px;
-    word-spacing: 2px;
-    color: #616161;
-    font-weight: normal;
-    text-decoration: none;
-    font-style: normal;
-    font-variant: normal;
-    text-transform: none;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.50);
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 `;
 
 const IconsPanel = styled.div`
-    float: right;
-    margin-right: 15%;
+    position: absolute;
+    margin-left: 75%;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 `;
 
 
@@ -39,8 +39,8 @@ export default function Header() {
         <AppBar>
             <Title> Nadácia Good Boy </Title>
             <IconsPanel>
-                <FacebookIcon/>
-                <InstagramIcon/>
+                <FacebookIcon />
+                <InstagramIcon style={{marginLeft: "0.5rem"}}/>
             </IconsPanel>
         </AppBar>
     );

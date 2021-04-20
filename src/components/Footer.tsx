@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Divider, Grid } from '@material-ui/core';
+import { Divider, Grid, Typography, Box } from '@material-ui/core';
 import GoodBoyLogo from './../assets/images/good_boy_logo.png'
 
 
-const Tittle = styled.div`
-    font-family: "Arial Black", Gadget, sans-serif;
-    font-size: 20px;
+const Title = styled.div`
+    font-family: 'Roboto', sans-serif;
+    font-size: 26px;
     letter-spacing: 2px;
     word-spacing: 2px;
     color: #000000;
@@ -18,58 +18,46 @@ const Tittle = styled.div`
     float: right;
 `;
 
-const List = styled.div`
-    list-style-type: none;
-`;
-
-const Item = styled.div`
-    padding: 5px;
-    color: #616161;
-`;
-
 
 export default function Footer() {
     return (
         <>
         <Divider/>
-        <Grid style={{ marginBlockStart: "10%"}} container justify="center" alignItems="center">
+        <Grid style={{ marginBlockStart: "5%"}} container justify="center" alignItems="center" spacing={3}>
 
-            <Grid item xs={3}>
+            <Grid item xs={4}>
                 <Grid container justify="center" alignItems="center" spacing={3}>
                     <Grid item>
                         <img src={GoodBoyLogo} />
                     </Grid>
                     <Grid item>
-                        <Tittle> Good Boy </Tittle>   
+                        <Title> Good Boy </Title>   
                     </Grid>
                 </Grid>
             </Grid> 
 
-            <Grid item xs={3}>
-                <h4>Nadacia good boy</h4>
-                <List>
-                    <Item>O projekte</Item>
-                    <Item>Ako na to</Item>
-                    <Item>Kontakt</Item>
-                </List>
+            <Grid item xs={4}>
+                <Typography component="div">
+                    <Box p={1} fontWeight="fontWeightBold">
+                        Nadácia Good Boy
+                    </Box>
+                </Typography>
+                <Typography color="textSecondary" component="p">
+                    <Box  p={1} fontWeight="fontWeightRegular">
+                        O projekte
+                    </Box>
+                    <Box  p={1} fontWeight="fontWeightRegular">
+                        Ako na to
+                    </Box>
+                    <Box  p={1} fontWeight="fontWeightRegular">
+                        Kontakt
+                    </Box>
+                </Typography>
+
             </Grid>
 
-            <Grid item xs={3}>
-                <h4>Nadacia good boy</h4>
-                <List>
-                    <Item>O projekte</Item>
-                    <Item>Ako na to</Item>
-                    <Item>Kontakt</Item>
-                </List>
-            </Grid>
+            <Grid item xs={4}>
 
-            <Grid item xs={3}>
-                <h4>Nadacia good boy</h4>
-                <List>
-                    <Item>O projekte</Item>
-                    <Item>Ako na to</Item>
-                    <Item>Kontakt</Item>
-                </List>
             </Grid>
 
         </Grid>

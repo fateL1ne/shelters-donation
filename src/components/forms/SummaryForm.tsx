@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { State, Donation, SummaryProps, UserStructure } from '../../react-app-env';
 import SummaryItem from './SummaryItem';
+import { Grid } from '@material-ui/core';
 
 
 function SummaryForm(props : SummaryProps) {
@@ -17,24 +18,24 @@ function SummaryForm(props : SummaryProps) {
 
 
     return (
-        <>
-        <Typography component="div">
-            <Box fontSize="h3.fontSize" fontWeight="fontWeightMedium" m={1}>
-                Skontrolujte si zadané údaje
-            </Box>
-            <SummaryItem title={"Akou formou chcem podporiť"} value={"Všeobecne"}/>
-            <SummaryItem title={"Najviac mi záleží na útulku "} value={"Humenné"}/>
-            <SummaryItem title={"Suma ktorou chcem prispieť"} value={donation.amount}/>
-            <SummaryItem title={"Meno a priezvisko"} value={user.firstName + " " + user.lastName}/>
-            <SummaryItem title={"E-mailová adresa"} value={user.email}/>
-            <SummaryItem title={"Telefónne číslo"} value={user.phone}/>
-        </Typography>
+        <Grid container direction="row" spacing={1}>
+            <Typography component="div">
+                <Box fontSize="h3.fontSize" fontWeight="fontWeightMedium" m={1}>
+                    Skontrolujte si zadané údaje
+                </Box>
+                <SummaryItem title={"Akou formou chcem podporiť"} value={"Všeobecne"}/>
+                <SummaryItem title={"Najviac mi záleží na útulku "} value={"Humenné"}/>
+                <SummaryItem title={"Suma ktorou chcem prispieť"} value={donation.amount}/>
+                <SummaryItem title={"Meno a priezvisko"} value={user.firstName + " " + user.lastName}/>
+                <SummaryItem title={"E-mailová adresa"} value={user.email}/>
+                <SummaryItem title={"Telefónne číslo"} value={user.phone}/>
+            </Typography>
 
-        <FormControlLabel
-            control={<Checkbox checked={GDPR} onChange={handleCheckBox} name="checkedA" />}
-            label="Súhlasím so spracovaním osobných údajov"
-        />
-        </>
+            <FormControlLabel
+                control={<Checkbox checked={GDPR} onChange={handleCheckBox} name="checkedA" />}
+                label="Súhlasím so spracovaním osobných údajov"
+            />
+        </Grid>
     );
 }
 

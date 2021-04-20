@@ -18,31 +18,18 @@ interface StepsProps {
     actualStep : number
 }
 
-const Button = styled.button`
-    background: #CD8A64;
-    background-image: -webkit-linear-gradient(top, #CD8A64, #C4794F);
-    background-image: -moz-linear-gradient(top, #CD8A64, #C4794F);
-    background-image: -ms-linear-gradient(top, #CD8A64, #C4794F);
-    background-image: -o-linear-gradient(top, #CD8A64, #C4794F);
-    background-image: linear-gradient(to bottom, #CD8A64, #C4794F);
-    -webkit-border-radius: 28;
-    -moz-border-radius: 28;
-    border-radius: 28px;
-    font-family: Arial;
+const Button = styled.button<{ float : string}>`
+    background: #C4794F;
+    border-radius: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
     color: #ffffff;
-    font-size: 20px;
-    padding: 10px 20px 10px 20px;
-    border: solid #C4794F 2px;
+    font-size: 16px;
+    padding: 1rem;
     text-decoration: none;
+    float: ${props => props.float};
 `;
-
-const StepNav = styled.div<{ active : boolean }>`
-    width: ${props => (props.active) ? '40px' : '20px'};
-    height: 5px;
-    border-radius: 25px;
-    background: #CD8A64;
-`;
-
 
 
 function StepsPanel(props : StepsProps) {
@@ -53,41 +40,27 @@ function StepsPanel(props : StepsProps) {
 
 
 
-    function getNavigationButtons() {
-        if (props.actualStep === 0) {
-            return <Button onClick={() => store.dispatch(increment())}> Pokračovať </Button>
-        } else if (props.actualStep === STEPS_SIZE) {
-            return (
-                <>
-                    <Button onClick={() => store.dispatch(decrement())}> Späť </Button>
-                    <Button onClick={() => console.log('odosielam form')}> Odoslať formulár </Button>
-                </>
-            );
-        } else {
-            return (
-                <>
-                    <Button onClick={() => store.dispatch(decrement())}> Späť </Button>
-                    <Button onClick={() => store.dispatch(increment())}> Pokračovať </Button>
-                </>
-            );
-        }
-    }
-    
     return (
         <>
         <Header />
-        <Container maxWidth="lg">
-            <Grid container direction="row" justify="center" alignItems="center">
+        <Container maxWidth="md">
+            <Grid container direction="row" justify="center" alignItems="center" style={{marginBlockEnd: "2%"}}>
                 <Grid item xs={9}>
-                    <Grid container direction="column" justify="center" alignItems="center" spacing={3}>
-                        <Grid item>
-
-                        </Grid>
+                    <Grid container direction="row" justify="center" alignItems="center" spacing={3}>
                         <Grid item>
                             { steps[props.actualStep] }
                         </Grid>
-                        <Grid item>      
-                            { getNavigationButtons() } 
+                        <Grid item xs={9}>  
+
+                            { props.actualStep > 0 &&
+                                <Button float="left" onClick={() => store.dispatch(decrement())}> Späť </Button>
+                            } 
+                            {
+                                props.actualStep === STEPS_SIZE ? 
+                                <Button float="right" onClick={() => console.log('odosielam form')}> Odoslať formulár </Button> :
+                                <Button float="right" onClick={() => store.dispatch(increment())}> Pokračovať </Button>
+    
+                            }
                         </Grid>
                     </Grid>
                 </Grid>

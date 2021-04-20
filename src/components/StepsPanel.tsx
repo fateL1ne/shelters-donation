@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import DonationForm from './DonationForm';
+import DonationForm from './forms/DonationForm';
 import SummaryForm from './SummaryForm';
 import PersonalForm from './PersonalForm';
 import styled from 'styled-components';
@@ -50,8 +50,6 @@ function StepsPanel(props : StepsProps) {
     const STEPS_SIZE : number = 2;
 
     const steps = [<DonationForm/>, <PersonalForm/>, <SummaryForm/>];
-
-
 
 
 

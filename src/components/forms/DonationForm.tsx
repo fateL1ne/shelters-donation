@@ -1,7 +1,7 @@
 import { Grid, Typography, Box } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-import { Shelters, Shelter } from './../react-app-env'; 
-import { fetchShelters } from './../service/http/Shelter';
+import { Shelters, Shelter } from '../../react-app-env'; 
+import { fetchShelters } from '../../service/http/Shelter';
 import Select from '@material-ui/core/Select';
 
 

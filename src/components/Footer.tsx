@@ -38,18 +38,18 @@ export default function Footer() {
 
             <Grid item xs={4}>
                 <Typography component="div">
-                    <Box p={1} fontWeight="fontWeightBold">
+                    <Box fontWeight="fontWeightBold">
                         Nadácia Good Boy
                     </Box>
                 </Typography>
-                <Typography color="textSecondary" component="p">
-                    <Box  p={1} fontWeight="fontWeightRegular">
+                <Typography color="textSecondary" component="p" style={{marginBlockStart: "1.5rem"}}>
+                    <Box  p={0.5} fontWeight="fontWeightRegular">
                         O projekte
                     </Box>
-                    <Box  p={1} fontWeight="fontWeightRegular">
+                    <Box  p={0.5} fontWeight="fontWeightRegular">
                         Ako na to
                     </Box>
-                    <Box  p={1} fontWeight="fontWeightRegular">
+                    <Box  p={0.5} fontWeight="fontWeightRegular">
                         Kontakt
                     </Box>
                 </Typography>

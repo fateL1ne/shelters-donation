@@ -37,7 +37,7 @@ function AmountPicker(props : any) {
 
     const inputUnit = (
         <InputAdornment  position="end">
-            <p style={{color: "white", fontWeight: "bold"}}> € </p> 
+            <p style={{color: (customAmount !== "") ? "white" : "black", fontWeight: "bold"}}> € </p> 
         </InputAdornment>
     );
 

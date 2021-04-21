@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import store from '../../redux/store';
 import { setEmail, setFirstName, setLastName, setPhone } from '../../redux/slices/User';
-import { State, UserStructure } from '../../react-app-env';
+import { State, UserStructure } from '../../global';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/material.css'
 import validator from 'validator';

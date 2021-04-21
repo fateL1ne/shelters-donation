@@ -3,7 +3,7 @@ import store from '../../../redux/store';
 import { setAmount } from '../../../redux/slices/Donation';
 import { Grid, Input, InputAdornment} from '@material-ui/core';
 import { connect } from 'react-redux';
-import { State } from '../../../react-app-env';
+import { State } from '../../../global';
 import styled  from 'styled-components';
 
 

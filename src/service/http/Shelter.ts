@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { Shelters, ContributionProps, Messages } from '../../react-app-env';
+import { Shelters, ContributionProps, Messages } from '../../global';
 import * as Url from '../../constants/Url';
 
 

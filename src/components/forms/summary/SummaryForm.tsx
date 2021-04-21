@@ -4,7 +4,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { State, Donation, SummaryProps, UserStructure, ContributionProps } from '../../../react-app-env';
+import { State, Donation, SummaryProps, UserStructure, ContributionProps } from '../../../global';
 import SummaryItem from './SummaryItem';
 import { Grid } from '@material-ui/core';
 import { decrement } from '../../../redux/slices/Steps';

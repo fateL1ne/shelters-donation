@@ -1,6 +1,6 @@
 import { Grid, Typography, Box, MenuItem, FormControl, InputLabel } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-import { Shelters, Shelter, State, Donation } from '../../../react-app-env'; 
+import { Shelters, Shelter, State, Donation } from '../../../global'; 
 import { fetchShelters } from '../../../service/http/Shelter';
 import Select from '@material-ui/core/Select';
 import AmountPicker from './AmountPicker';

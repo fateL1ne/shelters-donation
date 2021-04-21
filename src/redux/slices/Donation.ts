@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Donation, Shelter } from '../../react-app-env';
+import { Donation, Shelter } from '../../global';
 
 
 const initialState : Donation = {

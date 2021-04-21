@@ -3,7 +3,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import WarningIcon from '@material-ui/icons/Warning';
 import InfoIcon from '@material-ui/icons/Info';
-import { MessageStatus } from '../../react-app-env';
+import { MessageStatus } from '../../global';
 
 
 

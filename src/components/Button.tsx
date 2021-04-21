@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ButtonProps } from '../react-app-env';
+import { ButtonProps } from '../global';
 import { Grid } from '@material-ui/core';
 
 

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { StepsState } from '../../react-app-env';
+import { StepsState } from '../../global';
 
 
 const initialState : StepsState = {

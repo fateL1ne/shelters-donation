@@ -9,7 +9,7 @@ export async function fetchShelters() : Promise<Shelters> {
      return axiosResponse.data;
 }
 
-export async function contribute(params : ContributionProps) : Promise<Boolean> {
+export async function contribute(params : ContributionProps) : Promise<boolean> {
     let axiosResponse : AxiosResponse<Messages> = await axios.post<Messages>(Url.CONTRIBUTE, {
         firstName : params.firstName,
         lastName : params.lastName,

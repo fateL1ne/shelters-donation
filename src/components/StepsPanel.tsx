@@ -1,71 +1,61 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import DonationForm from './forms/DonationForm';
-import SummaryForm from './forms/SummaryForm';
+import DonationForm from './forms/donation/DonationForm';
+import SummaryForm from './forms/summary/SummaryForm';
 import PersonalForm from './forms/PersonalForm';
-import styled from 'styled-components';
-import store from '../redux/store';
-import { increment, decrement } from '../redux/slices/Steps';
 import Header from './Header'
 import Footer from './Footer';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import DogImage from '../assets/images/dog_main.png';
-
 import { Container, Grid } from '@material-ui/core';
+import styled from 'styled-components';
+
+require('./toast-colors.css')
 
 
 interface StepsProps {
     actualStep : number
 }
 
-const Button = styled.button<{ float : string}>`
-    background: #C4794F;
-    border-radius: 2rem;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    color: #ffffff;
-    font-size: 16px;
-    padding: 1rem;
-    text-decoration: none;
-    float: ${props => props.float};
+const StepsNavStatus = styled.button<{ active : boolean}>`
+    background: ${(props) => props.active ? "#C4794F" : "rgba(0, 0, 0, 0.12)"};
+    height: 6px;
+    border-radius: 15px;
+    margin: 0.3%;
+    margin-bottom: 1rem;
+    border-color: ${(props) => props.active ? "#C4794F" : "rgba(0, 0, 0, 0.12)"};
+    width: ${(props) => props.active ? "3rem" : "1rem"};
 `;
+
 
 
 function StepsPanel(props : StepsProps) {
 
-    const STEPS_SIZE : number = 2;
+    const steps = [
+        <DonationForm/>, 
+        <PersonalForm/>, 
+        <SummaryForm/>
+    ];
 
-    const steps = [<DonationForm/>, <PersonalForm/>, <SummaryForm/>];
-
-
+    function getStepsStatusUI() {
+        return steps.map( (step : JSX.Element, idx : number ) => {
+            return <StepsNavStatus active={idx === props.actualStep}/>
+        })
+    }
 
     return (
         <>
         <Header />
+        <ToastContainer />
         <Container maxWidth="md">
-            <Grid container direction="row" justify="center" alignItems="center" style={{marginBlockEnd: "2%"}}>
+            <Grid container style={{marginBlockStart: "2rem", marginBlockEnd: "2rem"}}>
                 <Grid item xs={9}>
-                    <Grid container direction="row" justify="center" alignItems="center" spacing={3}>
-                        <Grid item>
-                            { steps[props.actualStep] }
-                        </Grid>
-                        <Grid item xs={9}>  
-
-                            { props.actualStep > 0 &&
-                                <Button float="left" onClick={() => store.dispatch(decrement())}> Späť </Button>
-                            } 
-                            {
-                                props.actualStep === STEPS_SIZE ? 
-                                <Button float="right" onClick={() => console.log('odosielam form')}> Odoslať formulár </Button> :
-                                <Button float="right" onClick={() => store.dispatch(increment())}> Pokračovať </Button>
-    
-                            }
-                        </Grid>
-                    </Grid>
+                    { getStepsStatusUI() }
+                    { steps[props.actualStep] }
                 </Grid>
                 <Grid item xs={3}>
-                    <img src={DogImage} height="500px"/>
+                    <img src={DogImage} height="500px" />
                 </Grid>
             </Grid>
             <Footer/>
@@ -76,11 +66,9 @@ function StepsPanel(props : StepsProps) {
 
 
 function mapStateToProps (state : any) {
-    console.log(state)
     return { 
         actualStep : state.steps.actualStep
     }
 }
-
 
 export default connect(mapStateToProps)(StepsPanel)

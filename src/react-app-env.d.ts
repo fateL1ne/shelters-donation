@@ -7,6 +7,8 @@ export type Shelters = {
     shelters : Shelter[]
 }
 
+type MessageStatus = 'info' | 'warning';
+
 export interface ContributionProps {
     firstName : string,
     lastName : string,
@@ -43,6 +45,7 @@ export interface StepsState {
 }
 
 export interface ButtonProps {
+    float : string,
     title : string,
     callback: () => void;
 }

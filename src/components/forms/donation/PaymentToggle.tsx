@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setGeneral } from './../../redux/slices/Donation';
+import { setGeneral } from '../../../redux/slices/Donation';
 import styled  from 'styled-components';
 import { Grid, SvgIcon, Box, Typography } from '@material-ui/core';
-import { State } from '../../react-app-env';
-import store from './../../redux/store';
+import { State } from '../../../react-app-env';
+import store from './../../../redux/store';
 import PetsIcon from '@material-ui/icons/Pets';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 

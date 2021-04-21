@@ -8,10 +8,10 @@ interface ItemProps {
 export default function SummaryItem(props : ItemProps) {
     return (
         <>
-        <Box fontWeight="fontWeightBold" m={1} fontSize={13} >
+        <Box fontWeight="fontWeightBold"  fontSize={13} >
             {props.title}
         </Box>
-        <Box fontWeight="fontWeightRegular" m={1}>
+        <Box fontWeight="fontWeightRegular" p={1}>
             {props.value}
         </Box>
         </>

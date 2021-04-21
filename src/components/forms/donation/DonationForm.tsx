@@ -1,18 +1,23 @@
-import { Grid, Typography, Box, MenuItem, FormControl } from '@material-ui/core';
+import { Grid, Typography, Box, MenuItem, FormControl, InputLabel } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-import { Shelters, Shelter, State } from '../../react-app-env'; 
-import { fetchShelters } from '../../service/http/Shelter';
+import { Shelters, Shelter, State, Donation } from '../../../react-app-env'; 
+import { fetchShelters } from '../../../service/http/Shelter';
 import Select from '@material-ui/core/Select';
 import AmountPicker from './AmountPicker';
 import PayloadToggle from './PaymentToggle';
-import store from './../../redux/store';
-import { setShelter } from '../../redux/slices/Donation';
+import store from '../../../redux/store';
+import { setShelter } from '../../../redux/slices/Donation';
 import { connect } from 'react-redux';
+import { increment } from '../../../redux/slices/Steps';
+import Button from '../../Button';
+import { showMessage } from '../../../service/ui/Toastify';
+
 
 
 function DonationForm(props : any) {
 
     const [ shelters, setShelters ] = useState<Shelters | null>(null);
+    let donation : Donation = props.donation;
 
     useEffect(() => {
         fetchShelters().then( (shelters : Shelters) => {
@@ -26,7 +31,7 @@ function DonationForm(props : any) {
 
     function changeShelter(event: React.ChangeEvent<{ value: unknown }>) {
         if (shelters && typeof event.target.value === 'number') {
-            store.dispatch(setShelter(shelters?.shelters[event.target.value -1]));
+            store.dispatch(setShelter(shelters.shelters[event.target.value -1]));
         }
     }
 
@@ -36,11 +41,19 @@ function DonationForm(props : any) {
         })
     }
 
+    function next() {
+        if (!donation.general && !donation.shelter) {
+            showMessage("Pre pokračovanie vyberte jednotlivý útulok", 'warning');
+        } else {
+            store.dispatch(increment());
+        }
+    }
+
     return (
-        <Grid container spacing={2}>
+        <Grid container spacing={1}>
             <Grid item>
             <Typography component="div">
-                <Box fontSize="h4.fontSize" fontWeight="fontWeightBold" m={1}>
+                <Box fontSize="h4.fontSize" fontWeight="fontWeightBold">
                     Vyberte si možnosť, ako chcete pomôcť
                 </Box>
             </Typography>
@@ -55,13 +68,12 @@ function DonationForm(props : any) {
                         </Box>
                     </Typography>
                 { shelters && 
-                <FormControl variant="outlined" fullWidth >
-                    <Select fullWidth value={ (props.shelter) ?  props.shelter.id : 1}  onChange={(e) => changeShelter(e)}>
-                        {getMenuItems() }
-                    </Select>
-                </FormControl>
-                }
-                
+                    <FormControl required variant="outlined" fullWidth >
+                        <Select fullWidth value={ (donation.shelter) ? donation.shelter.id : ""}  onChange={(e) => changeShelter(e)}>
+                            {getMenuItems() }
+                        </Select>
+                    </FormControl>
+                }   
             </Grid>
             <Grid item>
                 <Typography component="div">
@@ -71,13 +83,18 @@ function DonationForm(props : any) {
                 </Typography>
                 <AmountPicker />
             </Grid>
+            <Grid xs={12} style={{marginBlockStart: "1.5rem"}}>
+                <Grid item xs={11}>
+                    <Button float={'right'} title={"Pokračovať"} callback={next} />
+                </Grid>
+            </Grid>
         </Grid>
     );
 }
 
 function mapStateToProps (state : State) {
     return { 
-        shelter : state.donation.shelter
+        donation : state.donation
     }
 }
 

@@ -1,0 +1,9 @@
+.react-tel-input .form-control {
+    width: 100%; 
+}
+
+.react-tel-input .form-control:focus {
+    border-color: #C4794F;
+    box-shadow: 0 0 0 1px #C4794F;
+}
+

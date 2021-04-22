@@ -12,6 +12,8 @@ import Button from '../../Button';
 import store from '../../../redux/store';
 import { contribute } from '../../../service/http/Shelter';
 import { showMessage } from '../../../service/ui/Toastify';
+import { useTranslation } from 'react-i18next';
+
 
 
 
@@ -21,13 +23,14 @@ function SummaryForm(props : SummaryProps) {
     const user : UserStructure = props.user;
     const donation : Donation = props.donation;
     const handleCheckBox = (event: React.ChangeEvent<HTMLInputElement>) => setGDPR(event.target.checked);
+    const { t } = useTranslation();
 
     let donationText : string = (donation.general) ?  
-        "Chcem finančne prispieť celej nadácií" : "Chcem finančne prispieť konkrétnemu útulku";
+        t("generalDonation") : t("shelterDonation");
     
     function handleSubmit() {
         if (!GDPR) {
-            showMessage("Pred odoslaním musíte súhlasiť so spracovaním osobných údajov", "warning");
+            showMessage(t("gdprWarningMessage"), "warning");
             return;
         }
 
@@ -42,7 +45,7 @@ function SummaryForm(props : SummaryProps) {
 
         contribute(params).then( (success : boolean) => {
             if (success) {
-                showMessage("Ďakujeme za Váš príspevok!", "info");
+                showMessage(t("contributeMessage"), "info");
             }
         })
     
@@ -53,28 +56,28 @@ function SummaryForm(props : SummaryProps) {
             <Grid item>
                 <Typography component="div">
                     <Box fontSize="h3.fontSize" fontWeight="fontWeightMedium" m={1}>
-                        Skontrolujte si zadané údaje
+                        {t("summaryTitle")}
                     </Box>
                     <SummaryItem title={"Akou formou chcem podporiť"} value={donationText}/>
-                    { donation.shelter && <SummaryItem title={"Najviac mi záleží na útulku "} value={donation.shelter.name}/>}
-                    <SummaryItem title={"Suma ktorou chcem prispieť"} value={donation.amount + " €"}/>
-                    <SummaryItem title={"Meno a priezvisko"} value={user.firstName + " " + user.lastName}/>
-                    <SummaryItem title={"E-mailová adresa"} value={user.email}/>
-                    <SummaryItem title={"Telefónne číslo"} value={"+ " + user.phone.replace(/(.{3})/g,"$1 ")}/>
+                    { donation.shelter && <SummaryItem title={t("shelterSelection")} value={donation.shelter.name}/>}
+                    <SummaryItem title={t("donationAmount")} value={donation.amount + " €"}/>
+                    <SummaryItem title={t("nameSummary")} value={user.firstName + " " + user.lastName}/>
+                    <SummaryItem title={t("emailTitle")} value={user.email}/>
+                    <SummaryItem title={t("phone")} value={"+ " + user.phone.replace(/(.{3})/g,"$1 ")}/>
                 </Typography>
             </Grid>
 
             <Grid xs={12}>
                 <FormControlLabel
                     control={<Checkbox color="primary" size="medium" checked={GDPR} onChange={handleCheckBox} name="checkedA" />}
-                    label="Súhlasím so spracovaním osobných údajov"
+                    label={t("gdprApproval")}
                 />
             </Grid>
             <Grid item xs={6} style={{marginBlockStart: "1.5rem"}}>
-                <Button float={'left'} title={"Späť"} callback={() => store.dispatch(decrement())} />
+                <Button float={'left'} title={t("previous")} callback={() => store.dispatch(decrement())} />
             </Grid>
             <Grid item xs={6} style={{marginBlockStart: "1.5rem"}}>
-                <Button float={'right'} title={"Odoslať formulár"} callback={handleSubmit} />
+                <Button float={'right'} title={t("sendForm")} callback={handleSubmit} />
             </Grid>
         </Grid>
     );

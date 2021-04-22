@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Divider, Grid, Typography, Box } from '@material-ui/core';
 import GoodBoyLogo from './../assets/images/good_boy_logo.png'
+import { useTranslation } from "react-i18next";
 
 
 const Title = styled.div`
@@ -20,6 +21,9 @@ const Title = styled.div`
 
 
 export default function Footer() {
+
+    const { t } = useTranslation();
+
     return (
         <>
         <Divider/>
@@ -31,7 +35,7 @@ export default function Footer() {
                         <img src={GoodBoyLogo} />
                     </Grid>
                     <Grid item>
-                        <Title> Good Boy </Title>   
+                        <Title> {t("foundationName")} </Title>   
                     </Grid>
                 </Grid>
             </Grid> 
@@ -39,18 +43,18 @@ export default function Footer() {
             <Grid item xs={4}>
                 <Typography component="div">
                     <Box fontWeight="fontWeightBold">
-                        Nadácia Good Boy
+                        {t("title")} 
                     </Box>
                 </Typography>
                 <Typography color="textSecondary" component="p" style={{marginBlockStart: "1.5rem"}}>
                     <Box  p={0.5} fontWeight="fontWeightRegular">
-                        O projekte
+                        {t("aboutProject")} 
                     </Box>
                     <Box  p={0.5} fontWeight="fontWeightRegular">
-                        Ako na to
+                        {t("howTo")} 
                     </Box>
                     <Box  p={0.5} fontWeight="fontWeightRegular">
-                        Kontakt
+                        {t("contact")} 
                     </Box>
                 </Typography>
 

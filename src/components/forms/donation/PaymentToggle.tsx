@@ -7,6 +7,7 @@ import { State } from '../../../global';
 import store from './../../../redux/store';
 import PetsIcon from '@material-ui/icons/Pets';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
+import { useTranslation } from 'react-i18next';
 
 
 const Corner = styled.button<{ selected : boolean, side : string }>`
@@ -25,6 +26,7 @@ interface PaymentsProps {
 function PayloadToggle(props : PaymentsProps) {
 
     const changePayment = (generalPayment : boolean) => store.dispatch(setGeneral(generalPayment));
+    const { t } = useTranslation();
 
     return (
         <Grid container>
@@ -37,7 +39,7 @@ function PayloadToggle(props : PaymentsProps) {
                         <Grid item>
                            <Typography component="div">
                                 <Box fontWeight="fontWeightRegular" m={1}>
-                                    Chcem finančne prispieť konkretnému útulku
+                                    {t("shelterDonation")}
                                 </Box> 
                             </Typography> 
                         </Grid>
@@ -53,7 +55,7 @@ function PayloadToggle(props : PaymentsProps) {
                         <Grid item>
                             <Typography component="div">
                                 <Box fontWeight="fontWeightRegular" m={1}>
-                                    Chcem finančne prispieť celej nadácii
+                                    {t("generalDonation")}
                                 </Box> 
                             </Typography>
                         </Grid>                    

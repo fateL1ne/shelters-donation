@@ -1,6 +1,7 @@
 import React from 'react';
 import StepsPanel from './components/StepsPanel';
 import store from './redux/store';
+import "./translations/i18n";
 import { Provider } from 'react-redux';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 

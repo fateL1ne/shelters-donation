@@ -11,6 +11,8 @@ import validator from 'validator';
 import { increment, decrement } from '../../redux/slices/Steps';
 import Button from '../Button';
 import { showMessage } from '../../service/ui/Toastify';
+import { useTranslation } from 'react-i18next';
+
 
 require('./../phone-input.css');
 
@@ -19,6 +21,7 @@ function PersonalForm(props : any) {
 
     let userState : UserStructure = props.user;
     const availableCountries : Array<string> = ['sk', 'cz']
+    const { t } = useTranslation();
 
     const changeName = (event : React.ChangeEvent<HTMLInputElement>) => store.dispatch(setFirstName(event.target.value));
     const changeSurname = (event : React.ChangeEvent<HTMLInputElement>) => store.dispatch(setLastName(event.target.value));
@@ -29,7 +32,7 @@ function PersonalForm(props : any) {
         if (isEmailValid() && isUsernameValid() && userState.lastName !== "") {
             store.dispatch(increment());
         } else {
-            showMessage("Pre pokračovanie vyplňte všetky povinné údaje", "warning");
+            showMessage(t("fillMandatoryFieldsMessage"), "warning");
         }
     }
 
@@ -51,25 +54,25 @@ function PersonalForm(props : any) {
         <Grid container direction="row" spacing={2}>
             <Typography component="div">
                 <Box fontSize="h4.fontSize" fontWeight="fontWeightMedium" m={1}>
-                    Potrebujeme od Vás zopár informácií
+                    {t("personalFormTitle")}
                 </Box>
                 <Box fontSize="h6.fontSize"  fontWeight="fontWeightMedium" m={1}>
-                    O vás
+                    {t("about")}
                 </Box>
             </Typography>
             <Grid item xs={11}>
                 <TextField  
                     fullWidth 
                     value={userState.firstName}
-                    label="Meno" 
+                    label={t("name")}
                     error={!isUsernameValid()}
-                    placeholder="Zadajte Vaše meno"
+                    placeholder={t("enterUsername")}
                     variant="outlined"
                     onChange={changeName}
                     InputLabelProps={{
                         shrink: true,
                     }}
-                    helperText={ (isUsernameValid()) ? "" : "Meno musí obsahovať 2 až 20 znakov"}
+                    helperText={ (isUsernameValid()) ? "" : t("firstNameHelperText")}
                 />
             </Grid>
             <Grid item xs={11}>
@@ -77,30 +80,30 @@ function PersonalForm(props : any) {
                     required 
                     fullWidth 
                     value={userState.lastName}
-                    label="Priezvisko" 
+                    label={t("lastName")}
                     error={!isLastNameValid()}
-                    placeholder="Zadajte Vaše priezvisko"
+                    placeholder={t("enterLastname")}
                     variant="outlined"  
                     onChange={changeSurname}
                     InputLabelProps={{
                         shrink: true,
                     }}
-                    helperText={ (isLastNameValid()) ? "" : "Priezvisko musí obsahovať 2 až 30 znakov"}
+                    helperText={ (isLastNameValid()) ? "" : t("lastNameHelperText")}
                 />
             </Grid>
             <Grid item xs={11}>
                 <TextField 
                     fullWidth 
-                    label="E-mailová adresa" 
+                    label={t("emailTitle")} 
                     variant="outlined" 
-                    placeholder="Zadajte Váš e-mail"
+                    placeholder={t("enterEmail")} 
                     error={!isEmailValid()}
                     value={userState.email}
                     onChange={changeEmail}
                     InputLabelProps={{
                         shrink: true,
                     }}
-                    helperText={ (isEmailValid()) ? "" : "Zadajte platný formát pre e-mail"}
+                    helperText={ (isEmailValid()) ? "" : t("emailHelperText")}
                 />
             </Grid>
             <Grid item xs={11}>
@@ -112,10 +115,10 @@ function PersonalForm(props : any) {
                 />
             </Grid>
             <Grid item xs={6} style={{marginBlockStart: "1.5rem"}}>
-                <Button float={'left'} title={"Späť"} callback={() => store.dispatch(decrement())} />
+                <Button float={'left'} title={t("previous")} callback={() => store.dispatch(decrement())} />
             </Grid>
             <Grid item xs={6} style={{marginBlockStart: "1.5rem"}}>
-                <Button float={'right'} title={"Pokračovať"} callback={next} />
+                <Button float={'right'} title={t("next")} callback={next} />
             </Grid>
         </Grid>
     );

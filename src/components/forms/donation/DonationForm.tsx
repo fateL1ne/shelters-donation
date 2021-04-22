@@ -11,12 +11,15 @@ import { connect } from 'react-redux';
 import { increment } from '../../../redux/slices/Steps';
 import Button from '../../Button';
 import { showMessage } from '../../../service/ui/Toastify';
+import { useTranslation } from 'react-i18next';
+
 
 
 
 function DonationForm(props : any) {
 
     const [ shelters, setShelters ] = useState<Shelters | null>(null);
+    const { t } = useTranslation();
     let donation : Donation = props.donation;
 
     useEffect(() => {
@@ -43,7 +46,7 @@ function DonationForm(props : any) {
 
     function next() {
         if (!donation.general && !donation.shelter) {
-            showMessage("Pre pokračovanie vyberte jednotlivý útulok", 'warning');
+            showMessage(t("selectShelterMessage"), 'warning');
         } else {
             store.dispatch(increment());
         }
@@ -54,7 +57,7 @@ function DonationForm(props : any) {
             <Grid item>
             <Typography component="div">
                 <Box fontSize="h4.fontSize" fontWeight="fontWeightBold">
-                    Vyberte si možnosť, ako chcete pomôcť
+                    {t("donationFormTitle")}
                 </Box>
             </Typography>
             </Grid>
@@ -64,7 +67,7 @@ function DonationForm(props : any) {
             <Grid item xs={10}>
                 <Typography component="div">
                         <Box fontWeight="fontWeightMedium" p={2}>
-                            Najviac mi záleží na útulku
+                            {t("shelterSelection")}
                         </Box>
                     </Typography>
                 { shelters && 
@@ -78,14 +81,14 @@ function DonationForm(props : any) {
             <Grid item>
                 <Typography component="div">
                     <Box fontWeight="fontWeightMedium" p={2}>
-                        Suma ktorou chcem prispieť
+                        {t("donationAmount")}
                     </Box>
                 </Typography>
                 <AmountPicker />
             </Grid>
             <Grid xs={12} style={{marginBlockStart: "1.5rem"}}>
                 <Grid item xs={11}>
-                    <Button float={'right'} title={"Pokračovať"} callback={next} />
+                    <Button float={'right'} title={t("next")} callback={next} />
                 </Grid>
             </Grid>
         </Grid>

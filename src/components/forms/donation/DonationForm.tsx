@@ -1,4 +1,4 @@
-import { Grid, Typography, Box, MenuItem, FormControl, InputLabel, FormHelperText } from '@material-ui/core';
+import { Grid, Typography, Box, MenuItem, FormControl, FormHelperText } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { Shelters, Shelter, State, Donation } from '../../../global'; 
 import { fetchShelters } from '../../../service/http/Shelter';
@@ -54,11 +54,11 @@ function DonationForm(props : any) {
     return (
         <Grid container spacing={1}>
             <Grid item>
-            <Typography component="div">
-                <Box fontSize="h4.fontSize" fontWeight="fontWeightBold">
-                    {t("donationFormTitle")}
-                </Box>
-            </Typography>
+                <Typography component="div">
+                    <Box fontSize="h4.fontSize" fontWeight="fontWeightBold">
+                        {t("donationFormTitle")}
+                    </Box>
+                </Typography>
             </Grid>
             <Grid item>
                 <PayloadToggle />

@@ -7,7 +7,6 @@ import { State } from '../../../global';
 import styled  from 'styled-components';
 
 
-
 const AmountButton = styled.button<{ selected : boolean }>`
     border-radius: 1rem;
     color: #000000;
@@ -49,7 +48,6 @@ function AmountPicker(props : any) {
         if (!availableAmounts.includes(amount)) {
             setCustomAmount(amount.toString());
         }
-        
         store.dispatch(setAmount(amount));
     } 
 
@@ -74,7 +72,7 @@ function AmountPicker(props : any) {
                     <CustomAmountButton selected={customAmount !== ""}>
                         <Input 
                             value={customAmount}
-                            style={{paddingBottom: "0", width: "70%", fontWeight: "bold", color: "white", borderBottomColor: "red"}}
+                            style={{width: "70%", fontWeight: "bold", color: "white"}}
                             endAdornment={inputUnit} 
                             onChange={(event : React.ChangeEvent<HTMLInputElement>) => {
                                 changeAmount(parseInt(event.target.value))

@@ -52,6 +52,8 @@ export interface ButtonProps {
     float : string,
     title : string,
     callback: () => void;
+    color : string,
+    bgcolor: string,
 }
 
 export interface SummaryProps {

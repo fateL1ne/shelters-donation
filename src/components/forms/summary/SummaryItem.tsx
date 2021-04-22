@@ -1,8 +1,9 @@
 import Box from '@material-ui/core/Box';
+import { TFunctionResult } from 'i18next';
 
 interface ItemProps {
     title : string,
-    value : string | number,
+    value : string | number | TFunctionResult,
 }
 
 export default function SummaryItem(props : ItemProps) {

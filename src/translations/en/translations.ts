@@ -31,5 +31,9 @@ export const TRANSLATIONS_EN = {
     emailHelperText: "Please enter valid e-mail",
     contributeMessage: "Thank you for your contribution",
     nameSummary: "Full name",
-    gdprWarningMessage: "You must consent to the processing of personal data before contribution"
+    chooseShelter: "Select a shelter from the list",
+    gdprWarningMessage: "You must consent to the processing of personal data before contribution",
+    chooseSelterWarning: "You must select a specific shelter to continue",
+    enterAmountWarning: "You must enter an amount to continue",
+    summaryDonationType: "How I want to contribute"
 };

@@ -31,5 +31,9 @@ export const TRANSLATIONS_SK = {
     emailHelperText: "Zadajte platný formát pre e-mail",
     contributeMessage: "Ďakujeme za Váš príspevok!",
     nameSummary: "Meno a priezvisko",
-    gdprWarningMessage: "Pred odoslaním musíte súhlasiť so spracovaním osobných údajov"
+    chooseShelter: "Vyberte útulok zo zoznamu",
+    gdprWarningMessage: "Pred odoslaním musíte súhlasiť so spracovaním osobných údajov",
+    chooseSelterWarning: "Pre pokračovanie musíte zvoliť jednotlivý útolok",
+    enterAmountWarning: "Pre pokračovanie musíte zadať nejakú čiastku",
+    summaryDonationType: "Akou formou chcem podporiť"
 };

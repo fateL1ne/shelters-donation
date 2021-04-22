@@ -13,6 +13,9 @@ import store from '../../../redux/store';
 import { contribute } from '../../../service/http/Shelter';
 import { showMessage } from '../../../service/ui/Toastify';
 import { useTranslation } from 'react-i18next';
+import { resetUser } from '../../../redux/slices/User';
+import { resetDonation } from '../../../redux/slices/Donation';
+import { resetSteps } from '../../../redux/slices/Steps';
 
 
 function SummaryForm(props : SummaryProps) {
@@ -23,8 +26,6 @@ function SummaryForm(props : SummaryProps) {
     const handleCheckBox = (event: React.ChangeEvent<HTMLInputElement>) => setGDPR(event.target.checked);
     const { t } = useTranslation();
 
-    let donationText : string = (donation.general) ?  
-        t("generalDonation") : t("shelterDonation");
     
     function handleSubmit() {
         if (!GDPR) {
@@ -44,10 +45,18 @@ function SummaryForm(props : SummaryProps) {
         contribute(params).then( (success : boolean) => {
             if (success) {
                 showMessage(t("contributeMessage"), "info");
+                reset();
             }
         })
     
     }
+
+    function reset() {
+        store.dispatch(resetDonation())
+        store.dispatch(resetUser());
+        store.dispatch(resetSteps())
+    }
+
 
     return (
         <Grid container direction="row" spacing={1}>
@@ -56,7 +65,7 @@ function SummaryForm(props : SummaryProps) {
                     <Box fontSize="h3.fontSize" fontWeight="fontWeightMedium" m={1}>
                         {t("summaryTitle")}
                     </Box>
-                    <SummaryItem title={"Akou formou chcem podporiť"} value={donationText}/>
+                    <SummaryItem title={t("summaryDonationType")} value={(donation.general) ?  t("generalDonation") : t("shelterDonation")}/>
                     { donation.shelter && <SummaryItem title={t("shelterSelection")} value={donation.shelter.name}/>}
                     <SummaryItem title={t("donationAmount")} value={donation.amount + " €"}/>
                     <SummaryItem title={t("nameSummary")} value={user.firstName + " " + user.lastName}/>
@@ -83,6 +92,7 @@ function SummaryForm(props : SummaryProps) {
 
 
 function mapStateToProps (state : State) {
+    console.log(state)
     return { 
         donation : state.donation,
         user : state.user

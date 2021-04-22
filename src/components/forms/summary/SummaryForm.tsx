@@ -15,8 +15,6 @@ import { showMessage } from '../../../service/ui/Toastify';
 import { useTranslation } from 'react-i18next';
 
 
-
-
 function SummaryForm(props : SummaryProps) {
 
     const [ GDPR, setGDPR ] = useState<boolean>(false);
@@ -74,10 +72,10 @@ function SummaryForm(props : SummaryProps) {
                 />
             </Grid>
             <Grid item xs={6} style={{marginBlockStart: "1.5rem"}}>
-                <Button float={'left'} title={t("previous")} callback={() => store.dispatch(decrement())} />
+                <Button float={'left'} color={"black"} bgcolor={"#F3E2D9"} title={t("previous")} callback={() => store.dispatch(decrement())} />
             </Grid>
             <Grid item xs={6} style={{marginBlockStart: "1.5rem"}}>
-                <Button float={'right'} title={t("sendForm")} callback={handleSubmit} />
+                <Button float={'right'} color={"white"} bgcolor={"#9F9F9F"} title={t("sendForm")} callback={handleSubmit} />
             </Grid>
         </Grid>
     );

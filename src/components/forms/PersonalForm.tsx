@@ -115,10 +115,10 @@ function PersonalForm(props : any) {
                 />
             </Grid>
             <Grid item xs={6} style={{marginBlockStart: "1.5rem"}}>
-                <Button float={'left'} title={t("previous")} callback={() => store.dispatch(decrement())} />
+                <Button float={'left'} color={"black"} bgcolor={"#F3E2D9"} title={t("previous")} callback={() => store.dispatch(decrement())} />
             </Grid>
             <Grid item xs={6} style={{marginBlockStart: "1.5rem"}}>
-                <Button float={'right'} title={t("next")} callback={next} />
+                <Button float={'right'} color={"white"} bgcolor={"#9F9F9F"} title={t("next")} callback={next} />
             </Grid>
         </Grid>
     );

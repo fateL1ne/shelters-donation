@@ -88,7 +88,7 @@ function DonationForm(props : any) {
             </Grid>
             <Grid xs={12} style={{marginBlockStart: "1.5rem"}}>
                 <Grid item xs={11}>
-                    <Button float={'right'} title={t("next")} callback={next} />
+                    <Button float={'right'} title={t("next")} color={"white"} bgcolor={"#C4794F"} callback={next} />
                 </Grid>
             </Grid>
         </Grid>

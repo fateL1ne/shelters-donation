@@ -40,6 +40,10 @@ export interface UserStructure {
     phone : string 
 }
 
+export interface Language {
+    value : string
+}
+
 export interface StepsState {
     actualStep: number
 }
@@ -59,6 +63,7 @@ export interface State {
     user : UserStructure,
     donation : Donation,
     steps: StepsState
+    lang: Language
 }
 
 declare module "*.jpg" {

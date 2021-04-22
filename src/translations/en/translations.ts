@@ -1,7 +1,8 @@
 export const TRANSLATIONS_EN = {
     title: "Foundation Good Boy",
+    foundationName: "Good Boy",
     next: "Next",
-    previuos: "Back",
+    previous: "Back",
     donationFormTitle: "Choose how you want to help",
     generalDonation: "I want to contribute financially to the entire foundation",
     shelterDonation: "I want to contribute financially to a specific shelter",
@@ -17,4 +18,18 @@ export const TRANSLATIONS_EN = {
     phone: "Phone number",
     gdprApproval: "I agree to the processing of personal data ",
     sendForm: "Send form",
+    aboutProject: "About project",
+    howTo: "How to do it",
+    contact: "Contact",
+    selectShelterMessage: "Please select some shelter to continue",
+    fillMandatoryFieldsMessage: "Fill in all required fields to continue",
+    name: "Name",
+    lastName: "Surname",
+    email: "E-mail",
+    firstNameHelperText: "The name must contain 2 to 20 characters",
+    lastNameHelperText: "The name must contain 2 to 30 characters",
+    emailHelperText: "Please enter valid e-mail",
+    contributeMessage: "Thank you for your contribution",
+    nameSummary: "Full name",
+    gdprWarningMessage: "You must consent to the processing of personal data before contribution"
 };

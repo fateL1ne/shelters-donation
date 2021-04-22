@@ -1,7 +1,8 @@
 export const TRANSLATIONS_SK = {
     title: "Nadácia Good Boy",
+    foundationName: "Good Boy",
     next: "Pokračovať",
-    previuos: "Späť",
+    previous: "Späť",
     donationFormTitle: "Vyberte si možnosť, ako chcete pomôcť",
     generalDonation: "Chcem finančne prispieť celej nadácii",
     shelterDonation: "Chcem finančne prispieť konkretnému útulku",
@@ -17,4 +18,18 @@ export const TRANSLATIONS_SK = {
     phone: "Telefónne číslo",
     gdprApproval: "Súhlasím so spracovaním osobných údajov",
     sendForm: "Odoslať formulár",
+    aboutProject: "O projekte",
+    howTo: "Ako na to",
+    contact: "Kontakt",
+    selectShelterMessage: "Pre pokračovanie vyberte jednotlivý útulok",
+    fillMandatoryFieldsMessage: "Pre pokračovanie vyplňte všetky povinné údaje",
+    name: "Meno",
+    lastName: "Priezvisko",
+    email: "E-mail",
+    firstNameHelperText: "Meno musí obsahovať 2 až 20 znakov",
+    lastNameHelperText: "Priezvisko musí obsahovať 2 až 30 znakov",
+    emailHelperText: "Zadajte platný formát pre e-mail",
+    contributeMessage: "Ďakujeme za Váš príspevok!",
+    nameSummary: "Meno a priezvisko",
+    gdprWarningMessage: "Pred odoslaním musíte súhlasiť so spracovaním osobných údajov"
 };

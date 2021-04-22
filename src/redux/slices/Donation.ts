@@ -4,7 +4,7 @@ import { Donation, Shelter } from '../../global';
 
 const initialState : Donation = {
     general : true,
-    amount : 10
+    amount : 0
 } 
 
 const donationSlice = createSlice({
@@ -22,9 +22,12 @@ const donationSlice = createSlice({
         },
         setShelter(state, action : PayloadAction<Shelter>) {
             state.shelter = action.payload;
+        }, 
+        resetDonation(state) {
+            state = initialState
         }
     }
 })
 
-export const { setDonation, setAmount, setGeneral, setShelter } = donationSlice.actions;
+export const { setDonation, setAmount, setGeneral, setShelter, resetDonation } = donationSlice.actions;
 export default donationSlice.reducer;

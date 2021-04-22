@@ -15,9 +15,12 @@ const stepSlice = createSlice({
         },
         decrement: (state : StepsState) => {
             state.actualStep--
+        },
+        resetSteps: (state : StepsState) => {
+            state.actualStep-=2
         }
     }
 })
 
-export const { increment, decrement } = stepSlice.actions;
+export const { increment, decrement, resetSteps } = stepSlice.actions;
 export default stepSlice.reducer;

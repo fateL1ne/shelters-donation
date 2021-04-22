@@ -27,9 +27,12 @@ const userSlice = createSlice({
         },
         setEmail(state, action : PayloadAction<string>) {
             state.email = action.payload;
+        },
+        resetUser(state) {
+            state = initialState
         }
     }
 })
 
-export const { setUser, setFirstName, setLastName, setEmail, setPhone } = userSlice.actions;
+export const { setUser, setFirstName, setLastName, setEmail, setPhone, resetUser } = userSlice.actions;
 export default userSlice.reducer;

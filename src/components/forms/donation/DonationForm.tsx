@@ -1,4 +1,4 @@
-import { Grid, Typography, Box, MenuItem, FormControl, InputLabel } from '@material-ui/core';
+import { Grid, Typography, Box, MenuItem, FormControl, InputLabel, FormHelperText } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { Shelters, Shelter, State, Donation } from '../../../global'; 
 import { fetchShelters } from '../../../service/http/Shelter';
@@ -14,8 +14,6 @@ import { showMessage } from '../../../service/ui/Toastify';
 import { useTranslation } from 'react-i18next';
 
 
-
-
 function DonationForm(props : any) {
 
     const [ shelters, setShelters ] = useState<Shelters | null>(null);
@@ -24,7 +22,6 @@ function DonationForm(props : any) {
 
     useEffect(() => {
         fetchShelters().then( (shelters : Shelters) => {
-            console.log(shelters);
             setShelters(shelters);
         }).catch( (err : Error) => {
             console.log(err);
@@ -33,7 +30,7 @@ function DonationForm(props : any) {
 
 
     function changeShelter(event: React.ChangeEvent<{ value: unknown }>) {
-        if (shelters && typeof event.target.value === 'number') {
+        if (shelters && typeof event.target.value === 'number' && event.target.value > 0) {
             store.dispatch(setShelter(shelters.shelters[event.target.value -1]));
         }
     }
@@ -47,6 +44,8 @@ function DonationForm(props : any) {
     function next() {
         if (!donation.general && !donation.shelter) {
             showMessage(t("selectShelterMessage"), 'warning');
+        } else if (donation.amount === 0) {
+            showMessage(t("enterAmountWarning"), 'warning');
         } else {
             store.dispatch(increment());
         }
@@ -71,10 +70,14 @@ function DonationForm(props : any) {
                         </Box>
                     </Typography>
                 { shelters && 
-                    <FormControl required variant="outlined" fullWidth >
-                        <Select fullWidth value={ (donation.shelter) ? donation.shelter.id : ""}  onChange={(e) => changeShelter(e)}>
+                    <FormControl required error={!donation.general && !donation.shelter} variant="outlined" fullWidth >
+                        <Select fullWidth value={ (donation.shelter) ? donation.shelter.id : "0"}  onChange={(e) => changeShelter(e)}>
+                            <MenuItem value="0">
+                                {t("chooseShelter")}
+                            </MenuItem>
                             {getMenuItems() }
                         </Select>
+                        { (!donation.general && !donation.shelter) && <FormHelperText> {t("chooseSelterWarning")} </FormHelperText> }
                     </FormControl>
                 }   
             </Grid>

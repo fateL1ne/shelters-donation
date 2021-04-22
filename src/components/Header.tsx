@@ -9,6 +9,7 @@ import store from '../redux/store';
 import { setLang } from '../redux/slices/Language';
 
 
+
 const AppBar = styled.div`
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -30,7 +31,7 @@ const Title = styled.div`
 
 const IconsPanel = styled.div`
     position: absolute;
-    margin-left: 75%;
+    margin-left: 50%;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -38,7 +39,7 @@ const IconsPanel = styled.div`
 
 const LanguagePanel = styled.div`
     position: absolute;
-    margin-left: 90%;
+    margin-left: 75%;
     top: 50%;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
@@ -47,7 +48,7 @@ const LanguagePanel = styled.div`
 `;
 
 const Corner = styled.button<{ selected : boolean, side : string }>`
-    width: 2rem;
+    width: 3rem;
     height: 2rem;
     padding: 1px;
     border-radius: ${props => (props.side === 'right') ? '0% 10% 10% 0%' : '10% 0% 0% 10%;'}; 
@@ -77,7 +78,7 @@ function Header(props : Language) {
                 </Corner>
                 <Corner selected={lang === 'en'} side={'right'} onClick={() => changeLanguage('en')}>     
                     EN
-                </Corner>
+                </Corner> 
             </LanguagePanel>
         </AppBar>
     );

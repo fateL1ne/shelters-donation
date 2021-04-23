@@ -32,7 +32,7 @@ export default function Footer() {
             <Grid item xs={4}>
                 <Grid container justify="center" alignItems="center" spacing={3}>
                     <Grid item>
-                        <img src={GoodBoyLogo} />
+                        <img src={GoodBoyLogo} alt="good boy logo"/>
                     </Grid>
                     <Grid item>
                         <Title> {t("foundationName")} </Title>   
@@ -46,7 +46,7 @@ export default function Footer() {
                         {t("title")} 
                     </Box>
                 </Typography>
-                <Typography color="textSecondary" component="p" style={{marginBlockStart: "1.5rem"}}>
+                <Typography color="textSecondary" component="div" style={{marginBlockStart: "1.5rem"}}>
                     <Box  p={0.5} fontWeight="fontWeightRegular">
                         {t("aboutProject")} 
                     </Box>

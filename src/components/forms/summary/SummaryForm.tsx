@@ -45,7 +45,7 @@ function SummaryForm(props : SummaryProps) {
         contribute(params).then( (success : boolean) => {
             if (success) {
                 showMessage(t("contributeMessage"), "info");
-                reset();
+                setTimeout(reset, 3000);
             }
         })
     
@@ -74,7 +74,7 @@ function SummaryForm(props : SummaryProps) {
                 </Typography>
             </Grid>
 
-            <Grid xs={12}>
+            <Grid item xs={12}>
                 <FormControlLabel
                     control={<Checkbox color="primary" size="medium" checked={GDPR} onChange={handleCheckBox} name="checkedA" />}
                     label={t("gdprApproval")}

@@ -54,8 +54,8 @@ function StepsPanel(props : StepsProps) {
                     { getStepsStatusUI() }
                     { steps[props.actualStep] }
                 </Grid>
-                <Grid item xs={3}>
-                    <img src={DogImage} height="500px" />
+                <Grid item xs={3} style={{padding: "2rem"}}>
+                    <img src={DogImage} height="500px" alt="doge"/>
                 </Grid>
             </Grid>
             <Footer/>

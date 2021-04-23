@@ -40,7 +40,7 @@ function StepsPanel(props : StepsProps) {
 
     function getStepsStatusUI() {
         return steps.map( (step : JSX.Element, idx : number ) => {
-            return <StepsNavStatus active={idx === props.actualStep}/>
+            return <StepsNavStatus key={idx} active={idx === props.actualStep}/>
         })
     }
 

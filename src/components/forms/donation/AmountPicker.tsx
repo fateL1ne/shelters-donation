@@ -53,10 +53,10 @@ function AmountPicker(props : any) {
 
 
     function getAmountsUI() {
-        return availableAmounts.map( (amount : number) => {
+        return availableAmounts.map( (amount : number, idx : number) => {
             return (
-                <Grid item>
-                    <AmountButton value={customAmount} selected={amount === props.amount} onClick={() => changeAmount(amount)}> 
+                <Grid key={idx} item>
+                    <AmountButton key={idx} value={customAmount} selected={amount === props.amount} onClick={() => changeAmount(amount)}> 
                         {amount  + " €"}
                     </AmountButton> 
                 </Grid>

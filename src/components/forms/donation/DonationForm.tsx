@@ -36,8 +36,8 @@ function DonationForm(props : any) {
     }
 
     function getMenuItems() {
-        return shelters?.shelters.map((shelter : Shelter) => {
-            return <MenuItem value={shelter.id}> {shelter.name} </MenuItem>
+        return shelters?.shelters.map((shelter : Shelter, index : number) => {
+            return <MenuItem key={index} value={shelter.id}> {shelter.name} </MenuItem>
         })
     }
 
@@ -89,7 +89,7 @@ function DonationForm(props : any) {
                 </Typography>
                 <AmountPicker />
             </Grid>
-            <Grid xs={12} style={{marginBlockStart: "1.5rem"}}>
+            <Grid item xs={12} style={{marginBlockStart: "1.5rem"}}>
                 <Grid item xs={11}>
                     <Button float={'right'} title={t("next")} color={"white"} bgcolor={"#C4794F"} callback={next} />
                 </Grid>
